@@ -34,9 +34,9 @@ export default class Login extends Component {
     };
   }
 
-  static navigationOptions = {
-    header : null
-  }
+  // static navigationOptions = {
+  //   header : null
+  // }
   render() {
     // console.log(this.props)
 
@@ -56,7 +56,7 @@ export default class Login extends Component {
     return (
 
       <View style={css.layout}>
-        {toolbar}
+        
         <ScrollableTabView
           initialPage={0}
           locked={false}

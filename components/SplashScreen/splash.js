@@ -63,7 +63,7 @@ class Splash extends React.Component<Props, State> {
     {/* <Left/> */}
     <Body>
 
-              <Text style={{marginLeft:'20%',  marginTop: '10%' ,  fontSize: 40, }}>{UserName}</Text>
+              <Text style={{marginLeft:'5%',  marginTop: '10%' ,  fontSize: 25 , fontWeight: 'bold', }}>Welcome {UserName}</Text>
     </Body>
 {/* <Right/> */}
             </CardItem>
