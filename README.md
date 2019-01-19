@@ -1,4 +1,4 @@
-# Survey App
+# React Native splash 
 
 
 ## reading instruction for this file 
@@ -41,7 +41,7 @@
 
 
 ## Get Started
-I have send you the project folder name Admin Panel
+I have send you the project folder name project
 follow these steps 
 
 1) unzip folder 
