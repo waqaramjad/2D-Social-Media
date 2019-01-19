@@ -12,12 +12,12 @@ import {
 import {
   Navigator
 } from 'react-native-deprecated-custom-components'
-import Home from './components/home/home'
+// import Home from './components/home/home'
 import Login from './components/LoginSignup/loginSignup'
 // import Admin from './components/Admin/Admin'
-import Profile from './components/profile/profile'
-import  SurveyForm from './components/survey form/form'
-import ViewEditForm from './components/ViewEditForm/ViewEdit'
+// import Profile from './components/profile/profile'
+// import  SurveyForm from './components/survey form/form'
+// import ViewEditForm from './components/ViewEditForm/ViewEdit'
 import Splash from './components/SplashScreen/splash'
 import Dashboard from './components/home/DashBoard'
 import {createStackNavigator ,createAppContainer } from 'react-navigation';
@@ -26,11 +26,11 @@ import {createStackNavigator ,createAppContainer } from 'react-navigation';
  const App = createStackNavigator({
    Login: {screen: Login},
    Splash: {screen: Splash},
-   SurveyForm: {screen: SurveyForm},
-   Home: {screen: Home},
-  Profile: {screen: Profile},
+  //  SurveyForm: {screen: SurveyForm},
+  //  Home: {screen: Home},
+  // Profile: {screen: Profile},
   Dashboard: {screen: Dashboard},
-  ViewEditForm: {screen: ViewEditForm},
+  // ViewEditForm: {screen: ViewEditForm},
 });
 
 const AppContainer = createAppContainer(App) 
