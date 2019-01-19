@@ -14,6 +14,9 @@ export default class SignUp extends Component {
      
 			userEmail:'', 
       userPassword:''	, 
+      cnfrmPass :''
+
+
      		
 		}
 	}
@@ -27,6 +30,7 @@ export default class SignUp extends Component {
         const {userEmail} = this.state;
         // const {CompanyName} = this.state;
         const {userPassword} = this.state;
+        const {cnfrmPass} = this.state;
        
 
         // // console.log(FirstName)
@@ -42,18 +46,18 @@ export default class SignUp extends Component {
          
 
         }
-    //     var str1 = userPassword;
-    // var str2 = cnfrmPass;
+        var str1 = userPassword;
+    var str2 = cnfrmPass;
     var myUId ; 
     // //    
-    //     var n = str1.localeCompare(str2);
-    //     // console.log(n)  
+        var n = str1.localeCompare(str2);
+        // console.log(n)  
 
-    //     if(n===-1){
-    //       alert('Password not matched')
+        if(n===-1){
+          alert('Password not matched')
 
-    //     }
-    //     else{
+        }
+        else{
 
         // var userEmail1 = 'pp@p.com'
         // var userPassword1 = '000000'
@@ -76,7 +80,7 @@ export default class SignUp extends Component {
               alert(err.message)
               
           })
-        // }
+        }
   
   }
 // }
@@ -99,7 +103,7 @@ export default class SignUp extends Component {
            
             
             <IconInput secureTextEntry={true}  onChangeText= {userPassword => this.setState({userPassword})} placeholder="Password" image={require("@images/icon-password.png")}/>
-            {/* <IconInput secureTextEntry={true}  onChangeText= {cnfrmPass => this.setState({cnfrmPass})} placeholder=" Confirm Password" image={require("@images/icon-password.png")}/> */}
+            <IconInput secureTextEntry={true}  onChangeText= {cnfrmPass => this.setState({cnfrmPass})} placeholder=" Confirm Password" image={require("@images/icon-password.png")}/>
             {/* <IconInput   onChangeText= {billINfo => this.setState({billINfo})}
              placeholder="Biling Info " image={require("@images/icon-user.png")}/>
             <IconInput   onChangeText= {CardNo => this.setState({CardNo})}
@@ -107,7 +111,7 @@ export default class SignUp extends Component {
           </View>
           <ButtonRoundBlue
            onPress={this.signupAction}
-            text="Registration"/>
+            text="Register"/>
 
           <Text style={{color: 'white', opacity: 0.7, marginRight: 5, fontSize: 15}}>
             already have an account

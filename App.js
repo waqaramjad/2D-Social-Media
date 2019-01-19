@@ -19,6 +19,7 @@ import Profile from './components/profile/profile'
 import  SurveyForm from './components/survey form/form'
 import ViewEditForm from './components/ViewEditForm/ViewEdit'
 import Splash from './components/SplashScreen/splash'
+import Dashboard from './components/home/DashBoard'
 import {createStackNavigator ,createAppContainer } from 'react-navigation';
 
 
@@ -28,6 +29,7 @@ import {createStackNavigator ,createAppContainer } from 'react-navigation';
    SurveyForm: {screen: SurveyForm},
    Home: {screen: Home},
   Profile: {screen: Profile},
+  Dashboard: {screen: Dashboard},
   ViewEditForm: {screen: ViewEditForm},
 });
 

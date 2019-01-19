@@ -89,7 +89,7 @@ const { navigate } = myThis.props.prop.navigation;
       <View style={styles.container}>
         <View style={{marginTop: -15}}>
           <IconInput 	onChangeText={userEmail => this.setState({userEmail})}
- placeholder="Username" image={require("@images/icon-user.png")}/>
+ placeholder="Email" image={require("@images/icon-user.png")}/>
 
           <IconInput   secureTextEntry={true}	onChangeText={userPassword => this.setState({userPassword})}
  placeholder="Password" image={require("@images/icon-password.png")}/>

@@ -23,8 +23,8 @@ export interface Props {
 	navigation: any;
 }
 export interface State {}
-var UserName  ;
-class Splash extends React.Component<Props, State> {
+var UserName  
+class DashBoard extends React.Component<Props, State> {
     static navigationOptions = {
         header : null
       }
@@ -48,7 +48,7 @@ class Splash extends React.Component<Props, State> {
     // var a = this.props.navigation.navigate("Home") 
     var a = this.props.navigation
    
-        setTimeout(function(){ navigate("Dashboard", {userName: UserName})}, 2000);
+        // setTimeout(function(){ navigate("Login", {screen: "Screen Two"})}, 5500);
     
     }
    
@@ -63,7 +63,7 @@ class Splash extends React.Component<Props, State> {
     {/* <Left/> */}
     <Body>
 
-              <Text style={{marginLeft:'16%',  marginTop: '10%' ,  fontSize: 25 , fontWeight: 'bold', }}>Welcome {UserName}</Text>
+              <Text style={{marginLeft:'33%',  marginTop: '10%' ,  fontSize: 25 , fontWeight: 'bold', }}> {UserName}</Text>
     </Body>
 {/* <Right/> */}
             </CardItem>
@@ -76,8 +76,8 @@ class Splash extends React.Component<Props, State> {
     height: 10,
   }
 				}   */}
-<Image source={require('../../assets/splash/splash.jpg')}
-style={{height: 350, width: null, flex: 1 , marginTop : "2%"}}
+<Image source={require('../../assets/Dashboard/Neighbourhood.jpg')}
+style={{height: 350, width: null, flex: 1 , marginTop : "7%"}}
  
 ></Image>
 </CardItem>
@@ -135,4 +135,4 @@ const styles = StyleSheet.create({
 
   });
   
-export default Splash;
+export default DashBoard;
