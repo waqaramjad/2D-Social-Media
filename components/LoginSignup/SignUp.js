@@ -59,16 +59,29 @@ export default class SignUp extends Component {
         }
         else{
 
-        // var userEmail1 = 'pp@p.com'
-        // var userPassword1 = '000000'
-        firebase.auth().createUserWithEmailAndPassword(userEmail,userPassword)
+        //  userEmail = 'waqaramjad345@gmail.com'
+        //  userPassword = '000000'
+        var fb = firebase.auth()
+        fb.createUserWithEmailAndPassword(userEmail,userPassword)
             .then((createdUser) => {
                 alert('signed up successfully');
                 // console.log(createdUser.user.uid)
                 myUId = createdUser.user.uid ; 
-                // console.log(myUId)
+                console.log('myUId')
 
-                
+                fb.signInWithEmailAndPassword(userEmail, userPassword)
+                .then((signedinUser) => {
+
+                  var user = fb.currentUser
+                  user.sendEmailVerification().then(function() {
+                    console.log('email sent')
+                    
+                  })
+
+                }).catch(function(error) {
+                  // An error happened.
+                  console.log(error)
+                });              
   
                 firebase.database().ref('users/'+myUId+'/'  ).set(obj)
                     .then(() => {

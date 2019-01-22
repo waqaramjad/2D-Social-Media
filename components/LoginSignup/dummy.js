@@ -32,53 +32,82 @@ export default class SignIn extends Component {
 			const {userEmail,userPassword} = this.state;
       // var myNavigator = 	this.props.prop.navigator
 
-			// // console.log(myNavigator)
-      // console.log('done')
-      var emailVerified
-      var fb = firebase.auth()
-      const { navigate } = myThis.props.prop.navigation; 
-        fb.signInWithEmailAndPassword(userEmail, userPassword)
+			console.log('myNavigator')
+			// console.log('done')
+        firebase.auth().signInWithEmailAndPassword(userEmail, userPassword)
             .then((signedinUser) => {
+              var user = firebase.auth().currentUser;
+var emailVerified = user.emailVerified
+              console.log( 'user.emailVerified')
+              // console.log( user.emailVerified)
+
               firebase.database().ref('users/'+signedinUser.user.uid+'/' ).once('value').then(function(snapshot) {
-                console.log( 'user.emailVerified')
-                console.log( snapshot.val())
-                
-                
-                var user = fb.currentUser;
-                emailVerified = user.emailVerified
-                console.log( emailVerified)
-                
-                
-               console.log('hello')
-               
-               if (emailVerified === true)
-               {
-                 var checkForUser = snapshot.val()
-                 console.log(checkForUser.userName)
-                 console.log('checkForUser.userName')
-                 var checking = checkForUser.userName
-                console.log('checking' , 'checking')
-                console.log('inside' , navigate)
-                navigate("Splash", {userName: checking})
-               }
-               else{
-                 alert('email not verified ')
-                }
+              
+                var checkForUser = snapshot.val()
+               console.log(checkForUser.userName)
+               var checking = checkForUser.userName
+             
+
+              //  var user = firebase.auth().currentUser;
+
+              // console.log( 'user.emailVerified')
+              // console.log( user.emailVerified)
             
-               console.log('hello 1')
+
+
+
                 // console.log('else')
                 // alert('Login Success')
               //   myNavigator.push({
               //     title: 'Home' , 
                   
-              })
+              // })
 // console.log()
+// const { navigate } = myThis.props.prop.navigation; 
+// console.log('hu'+myThis.props.prop.navigation)
+              //  var checking = checkForUser.userName
+              //  navigate("Splash", {userName: checking})
 
+  //             var actionCodeSettings = {
+  //               url: 'https://practice-6b442.firebaseapp.com/?email=' + firebase.auth().currentUser.email,
+  //               iOS: {
+  //                 bundleId: 'com.example.ios'
+  //               },
+  //               android: {
+  //                 packageName: 'com.example.AwesomeProject',
+  //                 installApp: true,
+  //                 minimumVersion: '12'
+  //               },
+  //               handleCodeInApp: true,
+  //               // When multiple custom dynamic link domains are defined, specify which
+  //               // one to use.
+  //               dynamicLinkDomain: "example.page.link"
+  //             };
 
+  //             // var user = firebase.auth().currentUser;
+
+  //             firebase.auth().currentUser.sendEmailVerification(actionCodeSettings)
+  // .then(function() {
+  //   console.log('email sent ')
+  //   // Verification email sent.
+  // }).catch(function(error) {
+  //   console.log(error)
+
+  // })
+  // .catch(function(error) {
+  //   // Error occurred. Inspect error.code.
+  // });
+
+              // user.sendEmailVerification().then(function() {
+              //   console.log('email sent ')
+              // }).catch(function(error) {
+              //   console.log(error)
+                
+              // });
             
              
              
-              // });
+              });
               // console.log('check'+signedinUser.user.uid)
 
 					
