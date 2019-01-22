@@ -37,8 +37,8 @@ class Splash extends React.Component<Props, State> {
         const { state, navigate } = this.props.navigation;
        UserName = state.params.userName
      
-               console.log('this.props')
-              //  console.log(userName)
+               //console.log('this.props')
+              //  //console.log(userName)
       }
     componentDidMount() {
             

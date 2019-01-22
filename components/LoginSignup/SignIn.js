@@ -32,60 +32,52 @@ export default class SignIn extends Component {
 			const {userEmail,userPassword} = this.state;
       // var myNavigator = 	this.props.prop.navigator
 
-			// // console.log(myNavigator)
-      // console.log('done')
+			// // //console.log(myNavigator)
+      // //console.log('done')
       var emailVerified
       var fb = firebase.auth()
       const { navigate } = myThis.props.prop.navigation; 
         fb.signInWithEmailAndPassword(userEmail, userPassword)
             .then((signedinUser) => {
               firebase.database().ref('users/'+signedinUser.user.uid+'/' ).once('value').then(function(snapshot) {
-                console.log( 'user.emailVerified')
-                console.log( snapshot.val())
                 
                 
                 var user = fb.currentUser;
                 emailVerified = user.emailVerified
-                console.log( emailVerified)
                 
                 
-               console.log('hello')
                
                if (emailVerified === true)
                {
                  var checkForUser = snapshot.val()
-                 console.log(checkForUser.userName)
-                 console.log('checkForUser.userName')
                  var checking = checkForUser.userName
-                console.log('checking' , 'checking')
-                console.log('inside' , navigate)
                 navigate("Splash", {userName: checking})
                }
                else{
                  alert('email not verified ')
                 }
             
-               console.log('hello 1')
-                // console.log('else')
+               //console.log('hello 1')
+                // //console.log('else')
                 // alert('Login Success')
               //   myNavigator.push({
               //     title: 'Home' , 
                   
               })
-// console.log()
+// //console.log()
 
 
             
              
              
               // });
-              // console.log('check'+signedinUser.user.uid)
+              // //console.log('check'+signedinUser.user.uid)
 
 					
-							// console.log('done 2')
+							// //console.log('done 2')
 
             }).catch((err)=>{
-              // console.log(err)
+              // //console.log(err)
 							alert(err.message)
 						})
 
@@ -99,7 +91,7 @@ export default class SignIn extends Component {
 
 	
   render() {
-    // console.log(this.props)
+    // //console.log(this.props)
     const { navigate } = this.props.prop.navigation; 
 
     return (

@@ -38,7 +38,7 @@ export default class Login extends Component {
   //   header : null
   // }
   render() {
-    // console.log(this.props)
+    // //console.log(this.props)
 
     const toolbar = (
       <View style={[css.toolbarMenu]}>

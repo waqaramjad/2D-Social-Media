@@ -32,39 +32,39 @@ export default class SignIn extends Component {
 			const {userEmail,userPassword} = this.state;
       // var myNavigator = 	this.props.prop.navigator
 
-			console.log('myNavigator')
-			// console.log('done')
+			//console.log('myNavigator')
+			// //console.log('done')
         firebase.auth().signInWithEmailAndPassword(userEmail, userPassword)
             .then((signedinUser) => {
               var user = firebase.auth().currentUser;
 var emailVerified = user.emailVerified
-              console.log( 'user.emailVerified')
-              // console.log( user.emailVerified)
+              //console.log( 'user.emailVerified')
+              // //console.log( user.emailVerified)
 
               firebase.database().ref('users/'+signedinUser.user.uid+'/' ).once('value').then(function(snapshot) {
               
                 var checkForUser = snapshot.val()
-               console.log(checkForUser.userName)
+               //console.log(checkForUser.userName)
                var checking = checkForUser.userName
              
 
               //  var user = firebase.auth().currentUser;
 
-              // console.log( 'user.emailVerified')
-              // console.log( user.emailVerified)
+              // //console.log( 'user.emailVerified')
+              // //console.log( user.emailVerified)
             
 
 
 
-                // console.log('else')
+                // //console.log('else')
                 // alert('Login Success')
               //   myNavigator.push({
               //     title: 'Home' , 
                   
               // })
-// console.log()
+// //console.log()
 // const { navigate } = myThis.props.prop.navigation; 
-// console.log('hu'+myThis.props.prop.navigation)
+// //console.log('hu'+myThis.props.prop.navigation)
               //  var checking = checkForUser.userName
               //  navigate("Splash", {userName: checking})
 
@@ -88,10 +88,10 @@ var emailVerified = user.emailVerified
 
   //             firebase.auth().currentUser.sendEmailVerification(actionCodeSettings)
   // .then(function() {
-  //   console.log('email sent ')
+  //   //console.log('email sent ')
   //   // Verification email sent.
   // }).catch(function(error) {
-  //   console.log(error)
+  //   //console.log(error)
 
   // })
   // .catch(function(error) {
@@ -99,22 +99,22 @@ var emailVerified = user.emailVerified
   // });
 
               // user.sendEmailVerification().then(function() {
-              //   console.log('email sent ')
+              //   //console.log('email sent ')
               // }).catch(function(error) {
-              //   console.log(error)
+              //   //console.log(error)
                 
               // });
             
              
              
               });
-              // console.log('check'+signedinUser.user.uid)
+              // //console.log('check'+signedinUser.user.uid)
 
 					
-							// console.log('done 2')
+							// //console.log('done 2')
 
             }).catch((err)=>{
-              // console.log(err)
+              // //console.log(err)
 							alert(err.message)
 						})
 
@@ -128,7 +128,7 @@ var emailVerified = user.emailVerified
 
 	
   render() {
-    // console.log(this.props)
+    // //console.log(this.props)
     const { navigate } = this.props.prop.navigation; 
 
     return (
