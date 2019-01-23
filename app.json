@@ -4,6 +4,17 @@
     "packagerOpts": {
       "sourceExts": ["js", "jsx", "scss", "sass"],
       "transformer": "node_modules/react-native-sass-transformer/index.js" 
+    },
+    "ios": {
+      "supportsTablet": true
+    },
+
+    "android": {
+      "package": "com.zenclause.zenclause" , 
+      "versionCode" : 1, 
+      "permissions" : [] , 
+      "icon" : "./ass1ets/signUpLoginImages/snackicon.png"
+
     }
   } 
 }
