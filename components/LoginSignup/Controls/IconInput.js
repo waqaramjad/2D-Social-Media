@@ -3,7 +3,7 @@
 import React, {Component} from "react";
 import {Text, View, TextInput, Image} from "react-native";
 
-import css from "./Styles/style";
+import css from "../Styles/style";
 
 export default class IconInput extends Component {
     render() {

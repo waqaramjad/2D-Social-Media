@@ -7,6 +7,7 @@ import {ButtonRoundBlue}  from "./Controls/ButtonRoundBlue";
 import { IconInput}  from "./Controls/IconInput";
 import {Actions} from "react-native-router-flux";
 import firebase from 'firebase'
+import console = require("console");
 export default class SignUp extends Component {
   constructor(props){
 		super(props)
@@ -97,6 +98,8 @@ export default class SignUp extends Component {
         }
   
   }
+
+ 
 // }
   render() {
     return (
@@ -130,7 +133,7 @@ export default class SignUp extends Component {
           <Text style={{color: 'white', opacity: 0.7, marginRight: 5, fontSize: 15}}>
             already have an account
           </Text>
-          <TouchableOpacity  style={{alignSelf: 'flex-end', marginRight: 15}}>
+          <TouchableOpacity onPress={this.moveToSignIn}  style={{alignSelf: 'flex-end', marginRight: 15}}>
             <Text style={styles.registerLink}>
               Sign in now
             </Text>

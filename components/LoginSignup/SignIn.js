@@ -7,7 +7,7 @@ import Expo from "expo";
 import {Actions} from "react-native-router-flux";
 import styles from "./styles";
 import {ButtonRoundBlue}  from "./Controls/ButtonRoundBlue";
-import { IconInput}  from "./Controls/IconInput";
+import { IconInput}  from "./Controls/IconInput.js";
 import { Navigator } from 'react-native-deprecated-custom-components'
 import firebase, { database } from 'firebase';
 // import { StackNavigator } from 'react-navigation';

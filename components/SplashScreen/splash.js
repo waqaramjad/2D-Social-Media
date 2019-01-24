@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import { AppRegistry, View,StyleSheet ,  TouchableHighlight ,TouchableOpacity ,  Image } from 'react-native';
+import { AppRegistry, View,StyleSheet , StatusBar ,  TouchableHighlight ,TouchableOpacity ,  Image } from 'react-native';
 
 import {
   Container,
@@ -58,7 +58,7 @@ class Splash extends React.Component<Props, State> {
         return (
 <Container style={styles.container}>
 <Card>
-
+<StatusBar hidden={true} />
 <CardItem >
     {/* <Left/> */}
     <Body>
