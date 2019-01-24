@@ -5,7 +5,7 @@ import {Actions} from "react-native-router-flux";
 import ScrollableTabView, {ScrollableTabBar} from "react-native-scrollable-tab-view";
 import SignIn from "./SignIn";
 import SignUp from "./SignUp";
-import css from "@styles/style";
+import css from "./Styles/style";
 import firebase from 'firebase';
 
 
@@ -44,7 +44,7 @@ export default class Login extends Component {
       <View style={[css.toolbarMenu]}>
         <View style={{flexDirection: 'row', alignItems: 'center'}}>
           <TouchableOpacity onPress={Actions.product}>
-            <Image source={require('@images/icon-back.png')}
+            <Image source={require('../../assets/signUpLoginImages/icon-back.png')}
                    style={[css.imageIconLarge, {marginLeft: 8, width: 14}]}/>
           </TouchableOpacity>
         </View>

@@ -3,7 +3,8 @@
 import React, {Component} from "react";
 import {Text, View, ScrollView, TouchableOpacity} from "react-native";
 import styles from "./styles";
-import {ButtonRoundBlue, IconInput} from "@controls";
+import {ButtonRoundBlue}  from "./Controls/ButtonRoundBlue";
+import { IconInput}  from "./Controls/IconInput";
 import {Actions} from "react-native-router-flux";
 import firebase from 'firebase'
 export default class SignUp extends Component {
@@ -103,7 +104,7 @@ export default class SignUp extends Component {
         <View style={styles.container}>
           <View style={{marginTop: -20}}>
             <IconInput   onChangeText= {userName => this.setState({userName})}
- placeholder="User Name " image={require("@images/icon-user.png")}/>
+ placeholder="User Name " image={require("../../assets/signUpLoginImages/icon-user.png")}/>
 
 {/* <IconInput   onChangeText= {lastName => this.setState({lastName})}
  placeholder="Last Name" image={require("@images/icon-user.png")}/> */}
@@ -111,12 +112,12 @@ export default class SignUp extends Component {
             {/* <IconInput 	  onChangeText= {CompanyName => this.setState({CompanyName})}
             placeholder="Company name" image={require("@images/icon-email.png")}/> */}
             <IconInput 	  onChangeText= {userEmail => this.setState({userEmail})}
-            placeholder="Email" image={require("@images/icon-email.png")}/>
+            placeholder="Email" image={require("../../assets/signUpLoginImages/icon-email.png")}/>
 
            
             
-            <IconInput secureTextEntry={true}  onChangeText= {userPassword => this.setState({userPassword})} placeholder="Password" image={require("@images/icon-password.png")}/>
-            <IconInput secureTextEntry={true}  onChangeText= {cnfrmPass => this.setState({cnfrmPass})} placeholder=" Confirm Password" image={require("@images/icon-password.png")}/>
+            <IconInput secureTextEntry={true}  onChangeText= {userPassword => this.setState({userPassword})} placeholder="Password" image={require("../../assets/signUpLoginImages/icon-password.png")}/>
+            <IconInput secureTextEntry={true}  onChangeText= {cnfrmPass => this.setState({cnfrmPass})} placeholder=" Confirm Password" image={require("../../assets/signUpLoginImages/icon-password.png")}/>
             {/* <IconInput   onChangeText= {billINfo => this.setState({billINfo})}
              placeholder="Biling Info " image={require("@images/icon-user.png")}/>
             <IconInput   onChangeText= {CardNo => this.setState({CardNo})}

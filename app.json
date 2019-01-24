@@ -13,7 +13,7 @@
       "package": "com.zenclause.zenclause" , 
       "versionCode" : 1, 
       "permissions" : [] , 
-      "icon" : "./ass1ets/signUpLoginImages/snackicon.png"
+      "icon" : "./assets/signUpLoginImages/myicon.png"
 
     }
   } 

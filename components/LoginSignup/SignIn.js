@@ -2,12 +2,12 @@
 import React, {Component} from "react";
 // import {Text, View, Dimensions} from "react-native";
 import { StyleSheet, View, TouchableOpacity, Dimensions, StatusBar, Image, Text, Button, Modal } from 'react-native';
-// import myStyles from './App.scss'
 import Expo from "expo";
 
 import {Actions} from "react-native-router-flux";
 import styles from "./styles";
-import {ButtonRoundBlue, IconInput}  from "@controls";
+import {ButtonRoundBlue}  from "./Controls/ButtonRoundBlue";
+import { IconInput}  from "./Controls/IconInput";
 import { Navigator } from 'react-native-deprecated-custom-components'
 import firebase, { database } from 'firebase';
 // import { StackNavigator } from 'react-navigation';
@@ -98,10 +98,10 @@ export default class SignIn extends Component {
       <View style={styles.container}>
         <View style={{marginTop: -15}}>
           <IconInput 	onChangeText={userEmail => this.setState({userEmail})}
- placeholder="Email" image={require("@images/icon-user.png")}/>
+ placeholder="Email" image={require("../../assets/signUpLoginImages/icon-user.png")}/>
 
           <IconInput   secureTextEntry={true}	onChangeText={userPassword => this.setState({userPassword})}
- placeholder="Password" image={require("@images/icon-password.png")}/>
+ placeholder="Password" image={require("../../assets/signUpLoginImages/icon-password.png")}/>
         </View>
 
         <View style={{flexDirection: 'row', alignSelf: 'flex-end', marginTop: 10, marginBottom: 10}}>

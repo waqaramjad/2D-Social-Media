@@ -2,7 +2,7 @@
 
 import React, {Component} from "react";
 import {Text, View, TouchableOpacity, TextInput, Image} from "react-native";
-import css from "@styles/style";
+import css from "../Styles/style";
 
 export default class IconImage extends Component {
     render() {
