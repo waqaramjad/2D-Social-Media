@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import { AppRegistry, View,StyleSheet ,  TouchableHighlight ,TouchableOpacity ,  Image } from 'react-native';
+import { AppRegistry, View,StyleSheet , StatusBar  , TouchableHighlight ,TouchableOpacity ,  Image } from 'react-native';
 
 import {
   Container,
@@ -14,7 +14,8 @@ import {
   Body,
   Right,
   List,
-  ListItem , 
+  ListItem ,
+   
     Card, CardItem
 } from "native-base";
 // import React, { Component } from 'react';
@@ -34,8 +35,8 @@ class DashBoard extends React.Component<Props, State> {
         this.state={
           userName : ''
         }
-        const { state, navigate } = this.props.navigation;
-       UserName = state.params.userName
+        // const { state, navigate } = this.props.navigation;
+      //  UserName = state.params.userName
      
                console.log('this.props')
               //  console.log(userName)
@@ -57,17 +58,23 @@ class DashBoard extends React.Component<Props, State> {
         
         return (
 <Container style={styles.container}>
-<Card>
+{/* <Card> */}
 
-<CardItem >
+{/* <CardItem > */}
     {/* <Left/> */}
-    <Body>
-
-              <Text style={{marginLeft:'33%',  marginTop: '10%' ,  fontSize: 25 , fontWeight: 'bold', }}> {UserName}</Text>
-    </Body>
+    {/* <Body> */}
+    <StatusBar hidden={true} />
+ 
+              {/* <Text style={{marginLeft:'33%',  marginTop: '10%' ,  fontSize: 25 , fontWeight: 'bold', }}> '{UserName}'</Text> */}
+              <Text style={{ marginLeft:'33%', fontSize: 25 , fontWeight: 'bold', }}> wiki345</Text>
+              <View style={styles.imageContainer}>
+        <Image style={styles.image} source={require('../../assets/Dashboard/Neighbourhood.jpg')} />
+      </View> 
+  
+    {/* </Body> */}
 {/* <Right/> */}
-            </CardItem>
-<CardItem>
+            {/* </CardItem> */}
+{/* <CardItem> */}
     
  {/* style={
 {
@@ -76,12 +83,12 @@ class DashBoard extends React.Component<Props, State> {
     height: 10,
   }
 				}   */}
-<Image source={require('../../assets/Dashboard/Neighbourhood.jpg')}
-style={{height: 350, width: null, flex: 1 , marginTop : "7%"}}
+{/* <Image source={require('../../assets/Dashboard/Neighbourhood.jpeg')}
+style={{flex: 1 , marginTop : "7%"}}
  
-></Image>
-</CardItem>
-</Card>
+></Image> */}
+{/* </CardItem> */}
+{/* </Card> */}
         
       </Container>
 
@@ -131,6 +138,16 @@ const styles = StyleSheet.create({
       fontSize: 15,
       fontWeight: 'bold',
     },
+
+    imageContainer: {
+      flex: 1,
+      alignItems: 'stretch' ,
+      
+    },
+    image: {
+      flex: 1 , 
+     
+    }
 
 
   });

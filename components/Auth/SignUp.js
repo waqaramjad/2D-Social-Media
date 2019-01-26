@@ -183,7 +183,7 @@ export default class SignUp extends Component {
             <Item  last>
               {/* <Label>Password</Label> */}
               {/* <Icon active name='lock' /> */}
-              <Input  secureTextEntry={true}	onChangeText={cnfrmPass => this.setState({cnfrmPass})}  placeholder=' Confirm Password ' />
+              <Input  secureTextEntry={true}	onChangeText={cnfrmPass => this.setState({cnfrmPass})}  placeholder='Confirm Password ' />
             </Item>
 
             <Button block style={styles.Login} onPress={() => this.signupAction()}>
