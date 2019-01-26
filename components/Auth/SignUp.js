@@ -37,30 +37,40 @@ export default class SignUp extends Component {
     this.setState({ loading: false });
   }
   
-
+  
   signupAction = () => {
     let uid ;
-        const {userName} = this.state;
-       
-        const {userEmail} = this.state;
-        // const {CompanyName} = this.state;
-        const {userPassword} = this.state;
-        const {cnfrmPass} = this.state;
-       
+    let myThis = this
 
-        // // //console.log(FirstName)
+    this.setState({
+      userName : '' , 
+
+      userEmail:'', 
+      userPassword:''	, 
+      cnfrmPass :'',
+    })
+    const {userName} = this.state;
     
-  
-        var obj = {
-  
-          userName : userName,
-        
-
-          mail : userEmail,
-          // pass : userPassword , 
-         
-
-        }
+    const {userEmail} = this.state;
+    // const {CompanyName} = this.state;
+    const {userPassword} = this.state;
+    const {cnfrmPass} = this.state;
+    
+    
+    // // //console.log(FirstName)
+    
+    
+    var obj = {
+      
+      userName : userName,
+      
+      
+      mail : userEmail,
+      // pass : userPassword , 
+      
+      
+    }
+    const { navigate } = this.props.navigation; 
         var str1 = userPassword;
     var str2 = cnfrmPass;
     var myUId ; 
@@ -83,6 +93,7 @@ export default class SignUp extends Component {
                 // //console.log(createdUser.user.uid)
                 myUId = createdUser.user.uid ; 
                 //console.log('myUId')
+                
 
                 fb.signInWithEmailAndPassword(userEmail, userPassword)
                 .then((signedinUser) => {
@@ -90,6 +101,16 @@ export default class SignUp extends Component {
                   var user = fb.currentUser
                   user.sendEmailVerification().then(function() {
                     //console.log('email sent')
+                    alert('Check your Email to uthorize your account')
+
+     
+    
+                    // var a = this.props.navigation.navigate("Home") 
+                    // var a = this.props.navigation
+
+                   
+                   
+                        setTimeout(function(){ navigate("SignIn")}, 5000);
                     
                   })
 
@@ -132,9 +153,9 @@ export default class SignUp extends Component {
     return (
      <Container>
        <Header style={styles.mainColor}>
-          <Left />
+          
           <Body>
-            <Title style={{color:'white' , }}>Sign Up </Title>
+            <Title style={{color:'white' ,marginLeft:'13%' }}>ZenClause Sign Up </Title>
             
           </Body>
           <Right />
@@ -162,7 +183,7 @@ export default class SignUp extends Component {
             <Item  last>
               {/* <Label>Password</Label> */}
               {/* <Icon active name='lock' /> */}
-              <Input  secureTextEntry={true}	onChangeText={cnfrmPass => this.setState({cnfrmPass})}  placeholder=' confirm Password ' />
+              <Input  secureTextEntry={true}	onChangeText={cnfrmPass => this.setState({cnfrmPass})}  placeholder=' Confirm Password ' />
             </Item>
 
             <Button block style={styles.Login} onPress={() => this.signupAction()}>
@@ -181,7 +202,7 @@ export default class SignUp extends Component {
   textDecorationLine: 'underline'
 
             }}>
-              Sign in now
+              Sign In now
             </Text>
           </TouchableOpacity>
 

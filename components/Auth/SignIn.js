@@ -110,9 +110,9 @@ export default class SignIN extends Component {
       <Container>
         {/* <Header  /> */}
         <Header style={styles.mainColor}>
-          <Left />
+          
           <Body>
-            <Title style={{color:'white' , }}>Sign in </Title>
+            <Title style={{color:'white' ,marginLeft:'13%' }}>ZenClause Sign In </Title>
             
           </Body>
           <Right />
