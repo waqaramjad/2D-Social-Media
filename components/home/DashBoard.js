@@ -57,43 +57,20 @@ class DashBoard extends React.Component<Props, State> {
       
         
         return (
-<Container style={styles.container}>
-{/* <Card> */}
+        //  <Container>
 
-{/* <CardItem > */}
-    {/* <Left/> */}
-    {/* <Body> */}
-    <StatusBar hidden={true} />
- 
-              {/* <Text style={{marginLeft:'33%',  marginTop: '10%' ,  fontSize: 25 , fontWeight: 'bold', }}> '{UserName}'</Text> */}
-              <Text style={{ marginLeft:'33%', fontSize: 25 , fontWeight: 'bold', }}> wiki345</Text>
-              <View style={styles.imageContainer}>
-        <Image style={styles.image} source={require('../../assets/Dashboard/Neighbourhood.jpg')} />
-      </View> 
-  
-    {/* </Body> */}
-{/* <Right/> */}
-            {/* </CardItem> */}
-{/* <CardItem> */}
-    
- {/* style={
-{
-	
-	width:10,
-    height: 10,
-  }
-				}   */}
-{/* <Image source={require('../../assets/Dashboard/Neighbourhood.jpeg')}
-style={{flex: 1 , marginTop : "7%"}}
- 
-></Image> */}
-{/* </CardItem> */}
-{/* </Card> */}
-        
-      </Container>
+          <View style={styles.imageContainer}>
+        {/* <Image style={styles.image} source={{uri: 'https://i.ibb.co/X4mtzcC/Neighbourhood.jpg'}} /> */}
+        {/* <Image style={styles.image} source={{uri: 'https://i.ibb.co/zbGVYw1/ezgif-com-webp-to-png.png'}} /> */}
+        {/* <Image style={styles.image} source={{uri: 'https://i.ibb.co/VqSLXqz/rsz-ezgifcom-webp-to-png.png'}} /> */}
+        {/* <Image style={styles.image} source={{uri: 'https://i.ibb.co/JmFqWKw/rsz-3ezgifcom-webp-to-png.png'}} /> */}
+        {/* <Image style={styles.image} source={{uri: 'https://i.ibb.co/9nxCvs1/rsz-1rsz-3ezgifcom-webp-to-png.jpg'}} /> */}
+        {/* <Image style={styles.image} source={{uri: 'https://i.ibb.co/sKBWVRj/rsz-3ezgifcom-webp-to-png.jpg'}} /> */}
+        <Image style={styles.image} source={{uri: 'https://i.ibb.co/j89xFZ5/ezgif-com-gif-maker.jpg'}} />
+      </View>
+      
 
-          
-         
+        //  </Container>
         )
 
  
@@ -146,8 +123,23 @@ const styles = StyleSheet.create({
     },
     image: {
       flex: 1 , 
+      // width : '80%', 
+      // height : null
      
-    }
+    } , 
+    bgImageWrapper: {
+      position: 'absolute',
+      top: 0, bottom: 0, left: 0, right: 0
+  },
+  bgImage: {
+      flex: 1,
+      resizeMode: "stretch"
+  },
+  welcome: {
+      fontSize: 20,
+      textAlign: 'center',
+      margin: 10
+  }
 
 
   });
