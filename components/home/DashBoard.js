@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import { AppRegistry, View,StyleSheet , StatusBar  , TouchableHighlight ,TouchableOpacity ,  Image } from 'react-native';
+import { AppRegistry, View,StyleSheet , ImageBackground , StatusBar  , TouchableHighlight ,TouchableOpacity ,  Image } from 'react-native';
 
 import {
   Container,
@@ -35,8 +35,8 @@ class DashBoard extends React.Component<Props, State> {
         this.state={
           userName : ''
         }
-        // const { state, navigate } = this.props.navigation;
-      //  UserName = state.params.userName
+        const { state, navigate } = this.props.navigation;
+       UserName = state.params.userName
      
                console.log('this.props')
               //  console.log(userName)
@@ -57,20 +57,30 @@ class DashBoard extends React.Component<Props, State> {
       
         
         return (
-        //  <Container>
-
-          <View style={styles.imageContainer}>
+         <Container>
+           <StatusBar hidden={true} />
+{/* <View > */}
+  {/* <Text style={{color:'white' , position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center', alignItems: 'center'}}>Centered text</Text> */}
+{/* </View> */}
+          {/* <View style={styles.imageContainer}> */}
+          
         {/* <Image style={styles.image} source={{uri: 'https://i.ibb.co/X4mtzcC/Neighbourhood.jpg'}} /> */}
         {/* <Image style={styles.image} source={{uri: 'https://i.ibb.co/zbGVYw1/ezgif-com-webp-to-png.png'}} /> */}
         {/* <Image style={styles.image} source={{uri: 'https://i.ibb.co/VqSLXqz/rsz-ezgifcom-webp-to-png.png'}} /> */}
         {/* <Image style={styles.image} source={{uri: 'https://i.ibb.co/JmFqWKw/rsz-3ezgifcom-webp-to-png.png'}} /> */}
         {/* <Image style={styles.image} source={{uri: 'https://i.ibb.co/9nxCvs1/rsz-1rsz-3ezgifcom-webp-to-png.jpg'}} /> */}
         {/* <Image style={styles.image} source={{uri: 'https://i.ibb.co/sKBWVRj/rsz-3ezgifcom-webp-to-png.jpg'}} /> */}
-        <Image style={styles.image} source={{uri: 'https://i.ibb.co/j89xFZ5/ezgif-com-gif-maker.jpg'}} />
-      </View>
-      
+        {/* <Image style={styles.image} source={{uri: 'https://i.ibb.co/j89xFZ5/ezgif-com-gif-maker.jpg'}} /> */}
+        {/* <Image style={styles.image} /> */}
+      {/* </View> */}
+      <ImageBackground  source={{uri: 'https://i.ibb.co/VNxT8fh/ezgif-com-rotate.png'}} style={{width: '100%', height: '100%'}}>
+   <View style={{position: 'absolute', top: 0, left: 0, right: 0 ,  justifyContent: 'center', alignItems: 'center'}}>
+     <Text style={{ fontSize: 25 ,   fontWeight: 'bold' , color:'white'}}>{UserName}</Text>
+   </View>
+</ImageBackground>
 
-        //  </Container>
+
+          </Container>
         )
 
  
