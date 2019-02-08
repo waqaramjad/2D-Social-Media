@@ -19,10 +19,11 @@ import {
   Navigator
 } from 'react-native-deprecated-custom-components'
 // import Login from './components/LoginSignup/loginSignup'
+import Example from './components/SplashScreen/dummy'
+import Dashboard from './components/home/DashBoard'
 import SignIn from './components/Auth/SignIn'
 import SignUp from './components/Auth/SignUp'
 import Splash from './components/SplashScreen/splash'
-import Dashboard from './components/home/DashBoard'
 import {createStackNavigator ,createAppContainer } from 'react-navigation';
 
 
@@ -40,6 +41,7 @@ firebase.initializeApp(config);
 const App = createStackNavigator({
   SignIn: {screen: SignIn},
   Dashboard: {screen: Dashboard},
+  Example: {screen: Example},
    SignUp: {screen: SignUp},
    Splash: {screen: Splash},
 });

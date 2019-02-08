@@ -1,23 +1,27 @@
 import * as React from "react";
 
-import { AppRegistry, View,StyleSheet , ImageBackground , StatusBar  , TouchableHighlight ,TouchableOpacity ,  Image } from 'react-native';
+import { AppRegistry ,  View,StyleSheet , ImageBackground , StatusBar  , TouchableHighlight ,TouchableOpacity ,  Image } from 'react-native';
 
 import {
   Container,
   Header,
   Title,
   Content,
-  Text,
-  Button,
+  Text
+  ,Button,
   Icon,
   Left,
   Body,
   Right,
   List,
   ListItem ,
-   
-    Card, CardItem
+  Radio , 
+    Card, CardItem , Label
 } from "native-base";
+import Modal from "react-native-modal";
+import RadioForm, {RadioButton, RadioButtonInput, RadioButtonLabel} from 'react-native-simple-radio-button';
+import firebase from 'firebase';
+
 // import React, { Component } from 'react';
 // import styles from "./styles";
 export interface Props {
@@ -33,10 +37,12 @@ class DashBoard extends React.Component<Props, State> {
       constructor(props){
         super(props)
         this.state={
-          userName : ''
+          userName : '' , 
+          visibleModal: false
+
         }
         const { state, navigate } = this.props.navigation;
-       UserName = state.params.userName
+      //  UserName = state.params.userName
      
                console.log('this.props')
               //  console.log(userName)
@@ -52,6 +58,101 @@ class DashBoard extends React.Component<Props, State> {
         // setTimeout(function(){ navigate("Login", {screen: "Screen Two"})}, 5500);
     
     }
+
+// changePassword = (currentPassword1) => {
+//   // alert('done')
+//   var currentPassword = currentPassword1
+  
+//     alert('done')
+//     var user = firebase.auth().currentUser;
+//     console.log('user')
+//     console.log(user)
+//     var cred = firebase.auth.EmailAuthProvider.credential(
+//       user.email, currentPassword);
+
+//       return user.reauthenticateWithCredential(cred);
+  
+//     // console.log(cred)
+// }
+
+reauthenticate = (currentPassword) => {
+  var user = firebase.auth().currentUser;
+  var cred = firebase.auth.EmailAuthProvider.credential(
+      user.email, currentPassword);
+  return user.reauthenticateWithCredential(cred);
+}
+
+changePassword = (currentPassword, newPassword) => {
+  this.reauthenticate(currentPassword).then(() => {
+    var user = firebase.auth().currentUser;
+    user.updatePassword(newPassword).then(() => {
+      console.log("Password updated!");
+    }).catch((error) => { console.log(error); });
+  }).catch((error) => { console.log(error); });
+}
+
+changeEmail = (currentPassword, newEmail) => {
+  this.reauthenticate(currentPassword).then(() => {
+    var user = firebase.auth().currentUser;
+    user.updateEmail(newEmail).then(() => {
+      console.log("Email updated!");
+    }).catch((error) => { console.log(error); });
+  }).catch((error) => { console.log(error); });
+}
+
+    renderButton = (text, onPress) => (
+      <TouchableOpacity onPress={onPress}>
+        <View style={styles.button}>
+          <Text>{text}</Text>
+          
+        </View>
+      </TouchableOpacity>
+    );
+
+
+    renderModalContent = () => (
+      <View style={styles.modalContent}>
+        <Text>Hello!</Text>
+        <TouchableOpacity onPress={()=>this.reauthenticate('000000')}>
+        <View style={styles.button}>
+          <Text>change email  </Text>
+          
+        </View>
+      </TouchableOpacity>
+        <TouchableOpacity onPress={()=>this.changeEmail('123456', 'waqaramjad420@gmail.com')}>
+        <View style={styles.button}>
+          <Text>2nd Password  </Text>
+          
+        </View>
+      </TouchableOpacity>
+          
+        {/* <Label style={styles.labelTextRadio}>Copper Drops</Label>                    */}
+   
+   {/* <RadioForm
+     radio_props={true}
+     initial={false}
+     formHorizontal={true}
+     labelHorizontal={true}
+     buttonColor="black"
+     animation={false}
+     onPress={(value) => {alert('uyg')
+
+     }}
+
+     
+     buttonSize={20}
+     labelStyle={{color: 'black'}}
+     
+     
+     
+     
+     />  */}
+     {/* <Button><Text>xcbxcbxc</Text></Button> */}
+         
+        {/* </Content> */}
+        {this.renderButton("Close", () => this.setState({ visibleModal: null }))}
+      </View>
+    );
    
     render() {
       
@@ -74,9 +175,20 @@ class DashBoard extends React.Component<Props, State> {
         {/* <Image style={styles.image} /> */}
       {/* </View> */}
       <ImageBackground  source={{uri: 'https://i.ibb.co/VNxT8fh/ezgif-com-rotate.png'}} style={{width: '100%', height: '100%'}}>
-   <View style={{position: 'absolute', top: 0, left: 0, right: 0 ,  justifyContent: 'center', alignItems: 'center'}}>
-     <Text style={{ fontSize: 25 ,   fontWeight: 'bold' , color:'white'}}>{UserName}</Text>
-   </View>
+      <Modal
+              isVisible={this.state.visibleModal === true}
+              onBackdropPress={() => this.setState({ visibleModal: null })}
+            >
+              {this.renderModalContent()}
+            </Modal>
+   {/* <View style={{position: 'absolute', top: 1, right: 15 ,  justifyContent: 'center', alignItems: 'center'}} > */}
+     {/* <Text style={{ fontSize: 25 ,   fontWeight: 'bold' , color:'white'}}>UserName</Text> */}
+     {/* <Icon name='settings' fontSize='40'  style={{fontSize:27 , color :  'white'}} onpress={alert('fs')}/> */}
+   {/* </View> */}
+   <Button  transparent style={{position: 'absolute', top: 1, right: 15 ,  justifyContent: 'center', alignItems: 'center'}}  onPress={()=>{this.setState({visibleModal:true})}}>
+            
+            <Icon name='settings' fontSize='40'  style={{fontSize:27 , color :  'white'}}/>
+          </Button>
 </ImageBackground>
 
 
@@ -88,11 +200,11 @@ class DashBoard extends React.Component<Props, State> {
 }
 
 const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      justifyContent: 'center',
+    // container: {
+    //   flex: 1,
+    //   justifyContent: 'center',
       
-    },
+    // },
     welcome: {
       fontSize: 30,
       textAlign: 'center',
@@ -149,6 +261,47 @@ const styles = StyleSheet.create({
       fontSize: 20,
       textAlign: 'center',
       margin: 10
+  } , 
+  container: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center"
+  },
+  button: {
+    backgroundColor: "lightblue",
+    padding: 12,
+    margin: 16,
+    justifyContent: "center",
+    alignItems: "center",
+    borderRadius: 4,
+    borderColor: "rgba(0, 0, 0, 0.1)"
+  },
+  modalContent: {
+    backgroundColor: "white",
+    padding: 22,
+    justifyContent: "center",
+    alignItems: "center",
+    borderRadius: 4,
+    borderColor: "rgba(0, 0, 0, 0.1)"
+  },
+  bottomModal: {
+    justifyContent: "flex-end",
+    margin: 0
+  },
+  scrollableModal: {
+    height: 300
+  },
+  scrollableModalContent1: {
+    height: 200,
+    backgroundColor: "orange",
+    alignItems: "center",
+    justifyContent: "center"
+  },
+  scrollableModalContent2: {
+    height: 200,
+    backgroundColor: "lightgreen",
+    alignItems: "center",
+    justifyContent: "center"
   }
 
 
