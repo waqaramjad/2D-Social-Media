@@ -15,7 +15,7 @@ import {
   Right,
   List,
   ListItem ,
-  Radio , 
+  Radio , Item , Input , 
     Card, CardItem , Label
 } from "native-base";
 import Modal from "react-native-modal";
@@ -38,7 +38,16 @@ class DashBoard extends React.Component<Props, State> {
         super(props)
         this.state={
           userName : '' , 
-          visibleModal: false
+          visibleModal: false , 
+          visbleModalForEmail : false , 
+          visbleModalForPassword : false , 
+          visbleModalForHeaderText : false , 
+          visbleModalForImage : false ,
+          newEmail : '' , 
+          currentPasswordForEmail : '' , 
+          currentPasswordForPassword : '' , 
+          newPassword : '' , 
+
 
         }
         const { state, navigate } = this.props.navigation;
@@ -113,7 +122,7 @@ changeEmail = (currentPassword, newEmail) => {
     renderModalContent = () => (
       <View style={styles.modalContent}>
         <Text>Hello!</Text>
-        <TouchableOpacity onPress={()=>this.reauthenticate('000000')}>
+        <TouchableOpacity onPress={()=>{this.setState({visbleModalForEmail:true , visibleModal: false})}}>
         <View style={styles.button}>
           <Text>change email  </Text>
           
@@ -121,7 +130,13 @@ changeEmail = (currentPassword, newEmail) => {
       </TouchableOpacity>
         <TouchableOpacity onPress={()=>this.changeEmail('123456', 'waqaramjad420@gmail.com')}>
         <View style={styles.button}>
-          <Text>2nd Password  </Text>
+          <Text>re authen  </Text>
+          
+        </View>
+      </TouchableOpacity>
+        <TouchableOpacity onPress={()=>this.changePassword('123456', 'waqaramjad420@gmail.com')}>
+        <View style={styles.button}>
+          <Text>pass </Text>
           
         </View>
       </TouchableOpacity>
@@ -154,8 +169,83 @@ changeEmail = (currentPassword, newEmail) => {
       </View>
     );
    
+
+    renderModalContentForEmail = () => (
+      <View style={styles.modalContent}>
+        {/* <Text>Hello!</Text> */}
+        {/* <TouchableOpacity onPress={()=>this.reauthenticate('000000')}>
+        <View style={styles.button}>
+          <Text>change email  </Text>
+          
+        </View>
+      </TouchableOpacity> */}
+        {/* <TouchableOpacity onPress={()=>this.changeEmail('123456', 'waqaramjad420@gmail.com')}>
+        <View style={styles.button}>
+          <Text>2nd Password  </Text>
+          
+        </View>
+      </TouchableOpacity> */}
+
+<Item >
+            {/* <Icon active name='lock' /> */}
+
+              <Input onChangeText={newEmail => this.setState({newEmail})}  placeholder='new Email '/>
+            </Item>
+<Item >
+            {/* <Icon active name='lock' /> */}
+
+              <Input onChangeText={currentPasswordForEmail => this.setState({currentPasswordForEmail})}  placeholder='current Password '/>
+            </Item>
+            <TouchableOpacity onPress={()=>this.changeEmail(this.state.currentPasswordForEmail , this.state.currentPasswordForEmail)}>
+        <View style={styles.button}>
+          <Text>change email  </Text>
+          
+        </View>
+      </TouchableOpacity>
+        {this.renderButton("Close", () => this.setState({ visibleModal: null }))}
+      </View>
+    );
+    renderModalContentForPassword = () => (
+      <View style={styles.modalContent}>
+        <Text>Hello!</Text>
+        <TouchableOpacity onPress={()=>this.reauthenticate('000000')}>
+        <View style={styles.button}>
+          <Text>change email  </Text>
+          
+        </View>
+      </TouchableOpacity>
+        <TouchableOpacity onPress={()=>this.changeEmail('123456', 'waqaramjad420@gmail.com')}>
+        <View style={styles.button}>
+          <Text>2nd Password  </Text>
+          
+        </View>
+      </TouchableOpacity>
+          
+        {this.renderButton("Close", () => this.setState({ visibleModal: null }))}
+      </View>
+    );
+    renderModalContentForHeaderText = () => (
+      <View style={styles.modalContent}>
+        <Text>Hello!</Text>
+        <TouchableOpacity onPress={()=>this.reauthenticate('000000')}>
+        <View style={styles.button}>
+          <Text>change email  </Text>
+          
+        </View>
+      </TouchableOpacity>
+        <TouchableOpacity onPress={()=>this.changeEmail('123456', 'waqaramjad420@gmail.com')}>
+        <View style={styles.button}>
+          <Text>2nd Password  </Text>
+          
+        </View>
+      </TouchableOpacity>
+          
+        {this.renderButton("Close", () => this.setState({ visibleModal: null }))}
+      </View>
+    );
+
     render() {
-      
+      console.log(this.state.newEmail)
         
         return (
          <Container>
@@ -180,6 +270,31 @@ changeEmail = (currentPassword, newEmail) => {
               onBackdropPress={() => this.setState({ visibleModal: null })}
             >
               {this.renderModalContent()}
+            </Modal>
+
+            {/* /*************************************Modal pass  */ }
+
+            <Modal
+              isVisible={this.state.visbleModalForEmail === true}
+              onBackdropPress={() => this.setState({ visbleModalForEmail: null })}
+            >
+              {this.renderModalContentForEmail()}
+            </Modal>
+            {/* /*************************************Modal header text  */ }
+
+            <Modal
+              isVisible={this.state.visbleModalForPassword === true}
+              onBackdropPress={() => this.setState({ visbleModalForPassword: null })}
+            >
+              {this.renderModalContentForPassword()}
+            </Modal>
+            {/* /*************************************Modal header text  */ }
+
+            <Modal
+              isVisible={this.state.visbleModalForHeaderText === true}
+              onBackdropPress={() => this.setState({ visbleModalForHeaderText: null })}
+            >
+              {this.renderModalContentForHeaderText()}
             </Modal>
    {/* <View style={{position: 'absolute', top: 1, right: 15 ,  justifyContent: 'center', alignItems: 'center'}} > */}
      {/* <Text style={{ fontSize: 25 ,   fontWeight: 'bold' , color:'white'}}>UserName</Text> */}
