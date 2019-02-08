@@ -91,20 +91,43 @@ reauthenticate = (currentPassword) => {
   return user.reauthenticateWithCredential(cred);
 }
 
-changePassword = (currentPassword, newPassword) => {
+changePassword = () => {
+  
+  var currentPassword = this.state.currentPasswordForPassword
+  var newPassword = this.state.newPassword
+  var myThis = this 
   this.reauthenticate(currentPassword).then(() => {
     var user = firebase.auth().currentUser;
     user.updatePassword(newPassword).then(() => {
       console.log("Password updated!");
+      alert('Password Updated ')
+      // navigate("SignIn" )
+      myThis.setState({
+        visbleModalForPassword : false
+      })
+      const { navigate } = myThis.props.navigation;
+      setTimeout(function(){ navigate("SignIn")}, 3000);
     }).catch((error) => { console.log(error); });
   }).catch((error) => { console.log(error); });
 }
 
-changeEmail = (currentPassword, newEmail) => {
-  this.reauthenticate(currentPassword).then(() => {
-    var user = firebase.auth().currentUser;
-    user.updateEmail(newEmail).then(() => {
-      console.log("Email updated!");
+changeEmail = () => {
+  var currentPassword = this.state.currentPasswordForEmail
+  var newEmail = this.state.newEmail
+var myThis = this 
+
+
+this.reauthenticate(currentPassword).then(() => {
+  var user = firebase.auth().currentUser;
+  user.updateEmail(newEmail).then(() => {
+    console.log("Email updated!");
+    alert('Email Updated ')
+    // navigate("SignIn" )
+    myThis.setState({
+      visbleModalForEmail : false
+    })
+    const   {navigate}  = myThis.props.navigation;
+    setTimeout(function(){ navigate("SignIn")}, 3000);
     }).catch((error) => { console.log(error); });
   }).catch((error) => { console.log(error); });
 }
@@ -125,6 +148,12 @@ changeEmail = (currentPassword, newEmail) => {
         <TouchableOpacity onPress={()=>{this.setState({visbleModalForEmail:true , visibleModal: false})}}>
         <View style={styles.button}>
           <Text>change email  </Text>
+          
+        </View>
+      </TouchableOpacity>
+        <TouchableOpacity onPress={()=>{this.setState({visbleModalForPassword:true , visibleModal: false})}}>
+        <View style={styles.button}>
+          <Text>change Password  </Text>
           
         </View>
       </TouchableOpacity>
@@ -207,21 +236,24 @@ changeEmail = (currentPassword, newEmail) => {
     );
     renderModalContentForPassword = () => (
       <View style={styles.modalContent}>
-        <Text>Hello!</Text>
-        <TouchableOpacity onPress={()=>this.reauthenticate('000000')}>
+     <Item >
+            {/* <Icon active name='lock' /> */}
+
+              <Input onChangeText={currentPasswordForPassword => this.setState({currentPasswordForPassword})}  placeholder='Current Password '/>
+            </Item>
+<Item >
+            {/* <Icon active name='lock' /> */}
+
+              <Input onChangeText={newPassword => this.setState({newPassword})}  placeholder='New Password '/>
+            </Item>
+            <TouchableOpacity onPress={()=>this.changePassword()}>
         <View style={styles.button}>
-          <Text>change email  </Text>
+          <Text>Change Password  </Text>
           
         </View>
       </TouchableOpacity>
-        <TouchableOpacity onPress={()=>this.changeEmail('123456', 'waqaramjad420@gmail.com')}>
-        <View style={styles.button}>
-          <Text>2nd Password  </Text>
           
-        </View>
-      </TouchableOpacity>
-          
-        {this.renderButton("Close", () => this.setState({ visibleModal: null }))}
+        {/* {this.renderButton("Close", () => this.setState({ visibleModal: null }))} */}
       </View>
     );
     renderModalContentForHeaderText = () => (
