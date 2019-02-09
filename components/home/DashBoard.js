@@ -21,7 +21,7 @@ import {
 import Modal from "react-native-modal";
 import RadioForm, {RadioButton, RadioButtonInput, RadioButtonLabel} from 'react-native-simple-radio-button';
 import firebase from 'firebase';
-
+import { ImagePicker } from 'expo';
 // import React, { Component } from 'react';
 // import styles from "./styles";
 export interface Props {
@@ -29,6 +29,7 @@ export interface Props {
 }
 export interface State {}
 var UserName  
+var UID = 'igpjSAuSE2cnx2HCCKBfeI3DB672'
 class DashBoard extends React.Component<Props, State> {
     static navigationOptions = {
         header : null
@@ -46,14 +47,16 @@ class DashBoard extends React.Component<Props, State> {
           newEmail : '' , 
           currentPasswordForEmail : '' , 
           currentPasswordForPassword : '' , 
-          newPassword : '' , 
+          newPassword : '' , headerText : '' ,  image: null,
 
 
         }
         const { state, navigate } = this.props.navigation;
+        console.log(state.params)
       //  UserName = state.params.userName
-     
-               console.log('this.props')
+      // UID = state.params.UID
+              //  console.log(state.params.UID)
+              //  console.log(state.params)
               //  console.log(userName)
       }
     componentDidMount() {
@@ -111,6 +114,55 @@ changePassword = () => {
   }).catch((error) => { console.log(error); });
 }
 
+changeText = () => {
+
+  var changeText = this.state.headerText
+//c alert(changeText)
+console.log(UID )
+console.log(UID )
+// console.log(firebase )
+var a = {userName :changeText}
+firebase.database().ref('users/'+UID).update(a )
+
+}
+// imageChange  = () => {
+
+// alert('siudf')
+
+_pickImage = async () => {
+  console.log('image')
+  let result = await ImagePicker.launchImageLibraryAsync({
+    allowsEditing: true,
+    aspect: [4, 3],
+  });
+
+  console.log(result);
+
+  if (!result.cancelled) {
+    this.setState({ image: result.uri });
+var a = this.uploadImage().then(() => {
+  alert("Success");
+  
+})
+.catch((error) => {
+  alert(error);
+});
+console.log(a)
+  }
+};
+// }
+
+uploadImage = async () => {
+  var uri = this.state.image
+  console.log(uri)
+  var imageName = 'profile'
+  const response = await fetch(uri);
+  const blob = await response.blob();
+var projectNameText = this.state.projectNameText
+  var ref = firebase.storage().ref().child(UID+'/'+imageName);
+  return ref.put(blob);
+}
+
 changeEmail = () => {
   var currentPassword = this.state.currentPasswordForEmail
   var newEmail = this.state.newEmail
@@ -144,31 +196,34 @@ this.reauthenticate(currentPassword).then(() => {
 
     renderModalContent = () => (
       <View style={styles.modalContent}>
-        <Text>Hello!</Text>
+
+        <Text style={{fontSize: 25 , textDecorationStyle : 'bold'}}>Setting</Text>
         <TouchableOpacity onPress={()=>{this.setState({visbleModalForEmail:true , visibleModal: false})}}>
         <View style={styles.button}>
-          <Text>change email  </Text>
+
+          <Text>Change email  </Text>
           
-        </View>
+        </View>  
       </TouchableOpacity>
         <TouchableOpacity onPress={()=>{this.setState({visbleModalForPassword:true , visibleModal: false})}}>
         <View style={styles.button}>
-          <Text>change Password  </Text>
+          <Text>Change Password  </Text>
           
         </View>
       </TouchableOpacity>
-        <TouchableOpacity onPress={()=>this.changeEmail('123456', 'waqaramjad420@gmail.com')}>
+        <TouchableOpacity  onPress={()=>{this.setState({visbleModalForHeaderText:true , visibleModal: false})}}>
         <View style={styles.button}>
-          <Text>re authen  </Text>
+          <Text>Change Banner Text  </Text>
           
         </View>
       </TouchableOpacity>
-        <TouchableOpacity onPress={()=>this.changePassword('123456', 'waqaramjad420@gmail.com')}>
+        <TouchableOpacity onPress={()=>{this._pickImage()  }}>
         <View style={styles.button}>
-          <Text>pass </Text>
+          <Text> Change Image </Text>
           
         </View>
       </TouchableOpacity>
+          
           
         {/* <Label style={styles.labelTextRadio}>Copper Drops</Label>                    */}
    
@@ -231,7 +286,7 @@ this.reauthenticate(currentPassword).then(() => {
           
         </View>
       </TouchableOpacity>
-        {this.renderButton("Close", () => this.setState({ visibleModal: null }))}
+        {/* {this.renderButton("Close", () => this.setState({ visibleModal: null }))} */}
       </View>
     );
     renderModalContentForPassword = () => (
@@ -258,21 +313,19 @@ this.reauthenticate(currentPassword).then(() => {
     );
     renderModalContentForHeaderText = () => (
       <View style={styles.modalContent}>
-        <Text>Hello!</Text>
-        <TouchableOpacity onPress={()=>this.reauthenticate('000000')}>
+<Item >
+
+              <Input onChangeText={headerText => this.setState({headerText})}  placeholder='New Text  '/>
+            </Item>
+
+            {/* <TouchableOpacity onPress={()=>this.changeEmail(this.state.currentPasswordForEmail , this.state.currentPasswordForEmail)}> */}
+            <TouchableOpacity onPress={()=>this.changeText()}>
         <View style={styles.button}>
-          <Text>change email  </Text>
+          <Text>Change Hader Text  </Text>
           
         </View>
       </TouchableOpacity>
-        <TouchableOpacity onPress={()=>this.changeEmail('123456', 'waqaramjad420@gmail.com')}>
-        <View style={styles.button}>
-          <Text>2nd Password  </Text>
-          
-        </View>
-      </TouchableOpacity>
-          
-        {this.renderButton("Close", () => this.setState({ visibleModal: null }))}
+
       </View>
     );
 
@@ -291,12 +344,13 @@ this.reauthenticate(currentPassword).then(() => {
         {/* <Image style={styles.image} source={{uri: 'https://i.ibb.co/zbGVYw1/ezgif-com-webp-to-png.png'}} /> */}
         {/* <Image style={styles.image} source={{uri: 'https://i.ibb.co/VqSLXqz/rsz-ezgifcom-webp-to-png.png'}} /> */}
         {/* <Image style={styles.image} source={{uri: 'https://i.ibb.co/JmFqWKw/rsz-3ezgifcom-webp-to-png.png'}} /> */}
-        {/* <Image style={styles.image} source={{uri: 'https://i.ibb.co/9nxCvs1/rsz-1rsz-3ezgifcom-webp-to-png.jpg'}} /> */}
+        {/* <Image style ={styles.image} source={{uri: 'https://i.ibb.co/9nxCvs1/rsz-1rsz-3ezgifcom-webp-to-png.jpg'}} /> */}
         {/* <Image style={styles.image} source={{uri: 'https://i.ibb.co/sKBWVRj/rsz-3ezgifcom-webp-to-png.jpg'}} /> */}
         {/* <Image style={styles.image} source={{uri: 'https://i.ibb.co/j89xFZ5/ezgif-com-gif-maker.jpg'}} /> */}
         {/* <Image style={styles.image} /> */}
       {/* </View> */}
-      <ImageBackground  source={{uri: 'https://i.ibb.co/VNxT8fh/ezgif-com-rotate.png'}} style={{width: '100%', height: '100%'}}>
+      {/* <ImageBackground  source={{uri: 'https://i.ibb.co/VNxT8fh/ezgif-com-rotate.png'}} style={{width: '100%', height: '100%'}}> */}
+      <ImageBackground  source={{uri: 'https://i.ibb.co/wgkV59s/Empty-Neighborhood-2160-x-1440-4800dpi-01-1.png'}} style={{width: '100%', height: '100%'}}>
       <Modal
               isVisible={this.state.visibleModal === true}
               onBackdropPress={() => this.setState({ visibleModal: null })}
@@ -324,6 +378,14 @@ this.reauthenticate(currentPassword).then(() => {
 
             <Modal
               isVisible={this.state.visbleModalForHeaderText === true}
+              onBackdropPress={() => this.setState({ visbleModalForHeaderText: null })}
+            >
+              {this.renderModalContentForHeaderText()}
+            </Modal>
+            {/* /*************************************Modal header text  */ }
+
+            <Modal
+              isVisible={this.state.visbleModalForImage === true}
               onBackdropPress={() => this.setState({ visbleModalForHeaderText: null })}
             >
               {this.renderModalContentForHeaderText()}

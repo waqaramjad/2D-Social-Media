@@ -3,7 +3,7 @@ import { Container, Left , Header, Content, Body, Right, Title, Form, Item, Inpu
 import firebase, { database } from 'firebase';
 import Expo from "expo";
 import { View, ScrollView, StyleSheet , TouchableOpacity , StatusBar} from "react-native";
-
+import {AsyncStorage} from 'react-native';
 
 
 
@@ -57,7 +57,8 @@ export default class SignIN extends Component {
                    {
                      var checkForUser = snapshot.val()
                      var checking = checkForUser.userName
-                    navigate("Splash", {userName: checking})
+                     var UID = signedinUser.user.uid
+                    navigate("Splash", {userName: checking , UID : UID })
                    }
                    else{
                      alert('email not verified ')

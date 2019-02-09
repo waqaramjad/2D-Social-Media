@@ -24,6 +24,7 @@ export interface Props {
 }
 export interface State {}
 var UserName  ;
+var UID 
 class Splash extends React.Component<Props, State> {
     static navigationOptions = {
         header : null
@@ -36,6 +37,7 @@ class Splash extends React.Component<Props, State> {
         }
         const { state, navigate } = this.props.navigation;
        UserName = state.params.userName
+        UID = state.params.UID
      
                //console.log('this.props')
               //  //console.log(userName)
@@ -48,7 +50,7 @@ class Splash extends React.Component<Props, State> {
     // var a = this.props.navigation.navigate("Home") 
     var a = this.props.navigation
    
-        setTimeout(function(){ navigate("Dashboard", {userName: UserName})}, 5000);
+        setTimeout(function(){ navigate("Dashboard", {userName: UserName , UID : UID})}, 5000);
     
     }
    
