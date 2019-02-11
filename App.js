@@ -28,20 +28,20 @@ import {createStackNavigator ,createAppContainer } from 'react-navigation';
 
 
 var config = {
-  apiKey: "AIzaSyB4j851elw4Rkp63U_S3vnCXqNYOlWUoOU",
-    authDomain: "practice-6b442.firebaseapp.com",
-    databaseURL: "https://practice-6b442.firebaseio.com",
-    projectId: "practice-6b442",
-    storageBucket: "practice-6b442.appspot.com",
-    messagingSenderId: "463133660375"
+  apiKey: "AIzaSyDTO_VW8KigcpywWHw8q10DCQBRz0uBW54",
+  authDomain: "zenclause.firebaseapp.com",
+  databaseURL: "https://zenclause.firebaseio.com",
+  projectId: "zenclause",
+  storageBucket: "zenclause.appspot.com",
+  messagingSenderId: "284077417988"
 };
 firebase.initializeApp(config);
 
 
 const App = createStackNavigator({
   Dashboard: {screen: Dashboard},
-  Example: {screen: Example},
   SignIn: {screen: SignIn},   
+  Example: {screen: Example},
    SignUp: {screen: SignUp},
    Splash: {screen: Splash},
 });

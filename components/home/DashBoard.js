@@ -21,7 +21,8 @@ import {
 import Modal from "react-native-modal";
 import RadioForm, {RadioButton, RadioButtonInput, RadioButtonLabel} from 'react-native-simple-radio-button';
 import firebase from 'firebase';
-import { ImagePicker } from 'expo';
+import { ImagePicker  } from 'expo';
+import { ScreenOrientation } from 'expo';
 // import React, { Component } from 'react';
 // import styles from "./styles";
 export interface Props {
@@ -29,7 +30,7 @@ export interface Props {
 }
 export interface State {}
 var UserName  
-var UID = 'igpjSAuSE2cnx2HCCKBfeI3DB672'
+var UID = 'BF8O7RGFB8EBR87EWBF87WBESEF8SEB'
 class DashBoard extends React.Component<Props, State> {
     static navigationOptions = {
         header : null
@@ -66,8 +67,12 @@ class DashBoard extends React.Component<Props, State> {
     
     // var a = this.props.navigation.navigate("Home") 
     var a = this.props.navigation
+
+    // LANDSCAPE_RIGHT
+
+    // ScreenOrientation.allowAsync(ScreenOrientation.Orientation.LANDSCAPE);
    
-        // setTimeout(function(){ navigate("Login", {screen: "Screen Two"})}, 5500);
+    Expo.ScreenOrientation.allow(Expo.ScreenOrientation.Orientation.LANDSCAPE_RIGHT);        // setTimeout(function(){ navigate("Login", {screen: "Screen Two"})}, 5500);
     
     }
 
@@ -122,7 +127,11 @@ console.log(UID )
 console.log(UID )
 // console.log(firebase )
 var a = {userName :changeText}
+this.setState({
+  visbleModalForHeaderText : false
+})
 firebase.database().ref('users/'+UID).update(a )
+alert('Header Text Updated ')
 
 }
 // imageChange  = () => {
@@ -141,7 +150,7 @@ _pickImage = async () => {
   if (!result.cancelled) {
     this.setState({ image: result.uri });
 var a = this.uploadImage().then(() => {
-  alert("Success");
+  alert("Image Change ");
   
 })
 .catch((error) => {
@@ -197,13 +206,19 @@ this.reauthenticate(currentPassword).then(() => {
     renderModalContent = () => (
       <View style={styles.modalContent}>
 
-        <Text style={{fontSize: 25 , textDecorationStyle : 'bold'}}>Setting</Text>
+
+        <Text style={{fontSize: 25 ,fontWeight: 'bold'}}>Setting</Text>
+       
+       <View style={styles.rowConrainer}>
+
         <TouchableOpacity onPress={()=>{this.setState({visbleModalForEmail:true , visibleModal: false})}}>
         <View style={styles.button}>
 
           <Text>Change email  </Text>
           
         </View>  
+
+        
       </TouchableOpacity>
         <TouchableOpacity onPress={()=>{this.setState({visbleModalForPassword:true , visibleModal: false})}}>
         <View style={styles.button}>
@@ -211,6 +226,7 @@ this.reauthenticate(currentPassword).then(() => {
           
         </View>
       </TouchableOpacity>
+       </View>
         <TouchableOpacity  onPress={()=>{this.setState({visbleModalForHeaderText:true , visibleModal: false})}}>
         <View style={styles.button}>
           <Text>Change Banner Text  </Text>
@@ -350,7 +366,7 @@ this.reauthenticate(currentPassword).then(() => {
         {/* <Image style={styles.image} /> */}
       {/* </View> */}
       {/* <ImageBackground  source={{uri: 'https://i.ibb.co/VNxT8fh/ezgif-com-rotate.png'}} style={{width: '100%', height: '100%'}}> */}
-      <ImageBackground  source={{uri: 'https://i.ibb.co/wgkV59s/Empty-Neighborhood-2160-x-1440-4800dpi-01-1.png'}} style={{width: '100%', height: '100%'}}>
+      <ImageBackground  source={{uri: 'https://i.ibb.co/n7gmMCd/Empty-Neighborhood-2160-x-1440-4800dpi-01.png'}} style={{width: '100%', height: '100%'}}>
       <Modal
               isVisible={this.state.visibleModal === true}
               onBackdropPress={() => this.setState({ visibleModal: null })}
@@ -511,6 +527,11 @@ const styles = StyleSheet.create({
     backgroundColor: "lightgreen",
     alignItems: "center",
     justifyContent: "center"
+  } , 
+  rowConrainer : {
+    
+    flexDirection: 'row',
+    justifyContent: 'space-between'
   }
 
 
