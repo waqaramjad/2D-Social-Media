@@ -18,8 +18,6 @@ import firebase from 'firebase';
 import {
   Navigator
 } from 'react-native-deprecated-custom-components'
-// import Login from './components/LoginSignup/loginSignup'
-import Example from './components/SplashScreen/dummy'
 import Dashboard from './components/home/DashBoard'
 import SignIn from './components/Auth/SignIn'
 import SignUp from './components/Auth/SignUp'
@@ -39,9 +37,9 @@ firebase.initializeApp(config);
 
 
 const App = createStackNavigator({
-  Dashboard: {screen: Dashboard},
   SignIn: {screen: SignIn},   
-  Example: {screen: Example},
+  Dashboard: {screen: Dashboard},
+  
    SignUp: {screen: SignUp},
    Splash: {screen: Splash},
 });
