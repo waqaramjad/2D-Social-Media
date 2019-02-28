@@ -85,7 +85,7 @@ class DashBoard extends React.Component<Props, State> {
     const { state, navigate } = this.props.navigation;
     console.log(state.params);
     UserName = state.params.userName;
-    // UID = state.params.UID
+    UID = state.params.UID
     //  console.log(state.params.UID)
     //  console.log(state.params)
     //  console.log(userName)
@@ -276,7 +276,7 @@ class DashBoard extends React.Component<Props, State> {
   );
 
   renderModalContent = () => (
-   <SettingComponent/>
+   <SettingComponent  UserName={UserName} UID={UID}/>
 
     // <View style={styles.modalContent}>
     //   <Text style={{ fontSize: 25, fontWeight: "bold", color: "white" }}>
