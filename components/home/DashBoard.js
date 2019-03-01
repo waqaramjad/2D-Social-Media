@@ -48,7 +48,7 @@ import NumberTwo from "../../assets/images/number-two.png";
 import NumberThree from "../../assets/images/number-three.png";
 import NumberFour from "../../assets/images/number-four.png";
 import NumberFive from "../../assets/images/number-five.png";
-import SettingComponent from "../setting/setting";
+// import SettingComponent from "../setting/setting";
 // import React, { Component } from 'react';
 // import styles from "./styles";
 export interface Props {
@@ -276,7 +276,85 @@ class DashBoard extends React.Component<Props, State> {
   );
 
   renderModalContent = () => (
-   <SettingComponent  UserName={UserName} UID={UID}/>
+  //  <SettingComponent  UserName={UserName} UID={UID}/>
+  <Container>
+  <View style={styles.contView}>
+    <View style={{ flexDirection: "row", flex: 1 }}>
+      <View style={{flex: 1}}>
+        <Card style={{backgroundColor: "#1fbbd4", justifyContent: "center", alignItems: "center"}}>
+          <CardItem button           onPress={() => {
+            this.setState({ visbleModalForEmail: true, visibleModal: false });
+          }}
+ style={{backgroundColor: "#1fbbd4"}}> 
+          <Text style={{backgroundColor: "#1fbbd4" }}>Change Email</Text>
+          </CardItem>
+        </Card>
+      </View>
+      <View  style={{flex: 1}}>
+        <Card style={{backgroundColor: "#66bcff", justifyContent: "center", alignItems: "center"}}>
+          <CardItem button 
+                  onPress={() => {
+                    this.setState({
+                      visbleModalForHeaderText: true,
+                      visibleModal: false
+                    });
+                  }}
+
+                  style={{backgroundColor: "#66bcff"}}
+          >
+              <Text style={{backgroundColor: "#66bcff" }}>Change Banner Text</Text>
+          </CardItem>
+        </Card>
+        
+      </View>
+    </View>
+    <View style={{ flexDirection: "row", flex: 1 }}>
+      <View  style={{flex: 1}}>
+        <Card style={{backgroundColor: "#a1b223", justifyContent: "center", alignItems: "center"}}>
+          <CardItem button         onPress={() => {
+            this._pickImage();
+          }} style={{backgroundColor: "#a1b223"}}> 
+              <Text style={{backgroundColor: "#a1b223" }}>Change Image</Text>
+          </CardItem>
+        </Card>
+      </View>
+      <View  style={{flex: 1}}>
+        <Card style={{backgroundColor: "#f9622d", justifyContent: "center", alignItems: "center"}}> 
+          <CardItem button           onPress={() => {
+            this.setState({
+              visbleModalForPassword: true,
+              visibleModal: false
+            });
+          }}
+ style={{backgroundColor: "#f9622d"}}>
+              <Text style={{backgroundColor: "#f9622d" }}>Change Password</Text>
+          </CardItem>
+        </Card>
+      </View>
+    </View>
+    <View style={{ flexDirection: "row" , flex: 1}}>
+      <View  style={{flex: 1}}>
+        <Card style={{backgroundColor: "#fcbc2f", justifyContent: "center", alignItems: "center"}}>
+          <CardItem button 
+                  onPress={() => {
+                    this.changeBtn();
+                  }}
+          
+          style={{backgroundColor: "#fcbc2f"}}>
+              <Text style={{backgroundColor: "#fcbc2f" }}>{this.state.btnValue}</Text>
+          </CardItem>
+        </Card>
+      </View>
+      <View  style={{flex: 1}}>
+        <Card style={{backgroundColor: "#c32222", justifyContent: "center", alignItems: "center"}}>
+          <CardItem button onPress={() => alert("This is Card Header")} style={{backgroundColor: "#c32222"}}>
+              <Text style={{backgroundColor: "#c32222" }}>Cancel</Text>
+          </CardItem>
+        </Card>
+      </View>
+    </View>
+  </View>
+</Container>
 
     // <View style={styles.modalContent}>
     //   <Text style={{ fontSize: 25, fontWeight: "bold", color: "white" }}>
@@ -285,9 +363,9 @@ class DashBoard extends React.Component<Props, State> {
 
     //   <View style={styles.rowConrainer}>
     //     <TouchableOpacity
-    //       onPress={() => {
-    //         this.setState({ visbleModalForEmail: true, visibleModal: false });
-    //       }}
+          // onPress={() => {
+          //   this.setState({ visbleModalForEmail: true, visibleModal: false });
+          // }}
     //     >
     //       <View style={styles.button}>
     //         <Text>Change Email </Text>
@@ -295,12 +373,12 @@ class DashBoard extends React.Component<Props, State> {
     //     </TouchableOpacity>
 
     //     <TouchableOpacity
-    //       onPress={() => {
-    //         this.setState({
-    //           visbleModalForHeaderText: true,
-    //           visibleModal: false
-    //         });
-    //       }}
+          // onPress={() => {
+          //   this.setState({
+          //     visbleModalForHeaderText: true,
+          //     visibleModal: false
+          //   });
+          // }}
     //     >
     //       <View style={styles.button}>
     //         <Text>Change Banner Text </Text>
@@ -318,12 +396,12 @@ class DashBoard extends React.Component<Props, State> {
     //       </View>
     //     </TouchableOpacity>
     //     <TouchableOpacity
-    //       onPress={() => {
-    //         this.setState({
-    //           visbleModalForPassword: true,
-    //           visibleModal: false
-    //         });
-    //       }}
+          // onPress={() => {
+          //   this.setState({
+          //     visbleModalForPassword: true,
+          //     visibleModal: false
+          //   });
+          // }}
     //     >
     //       <View style={styles.button}>
     //         <Text>Change Password </Text>
@@ -334,9 +412,9 @@ class DashBoard extends React.Component<Props, State> {
     //   <View style={styles.rowConrainer}>
     //     <TouchableOpacity
     //       style={{ marginRight: "35%" }}
-    //       onPress={() => {
-    //         this.changeBtn();
-    //       }}
+          // onPress={() => {
+          //   this.changeBtn();
+          // }}
     //     >
     //       <View style={styles.buttonForVib}>
     //         <Text>{this.state.btnValue} </Text>
@@ -715,12 +793,13 @@ const styles = StyleSheet.create({
     borderColor: "rgba(0, 0, 0, 0.1)"
   },
   modalContent: {
-    // backgroundColor: "rgba(255, 255, 255, 0.3)",
-    // padding: 22,
-    // justifyContent: "center",
-    // alignItems: "center",
-    // borderRadius: 4,
-    // borderColor: "rgba(255, 255, 255, 0.1)"
+    
+    backgroundColor: "white",
+    padding: 22,
+    justifyContent: "center",
+    alignItems: "center",
+    borderRadius: 4,
+    borderColor: "rgba(0, 0, 0, 0.1)"
   },
   bottomModal: {
     justifyContent: "flex-end",
@@ -794,7 +873,11 @@ const styles = StyleSheet.create({
     height: 50,
     resizeMode: "contain",
     marginLeft: width / 1.2
-  }
+  } , 
+  contView: {
+    flex: 1,
+  flexDirection: "column",
+}
 });
 
 export default DashBoard;
