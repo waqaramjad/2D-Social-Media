@@ -210,7 +210,7 @@ class DashBoard extends React.Component<Props, State> {
       this.setState({ image: result.uri });
       var a = this.uploadImage()
         .then(() => {
-          alert("Image Change ");
+          alert("Success! Your Profile Image is Updated");
         })
         .catch(error => {
           alert(error);
@@ -479,7 +479,7 @@ class DashBoard extends React.Component<Props, State> {
 
         <Input
           onChangeText={newEmail => this.setState({ newEmail })}
-          placeholder="new Email "
+          placeholder="Please Enter New Email "
         />
       </Item>
       <Item>
@@ -489,7 +489,7 @@ class DashBoard extends React.Component<Props, State> {
           onChangeText={currentPasswordForEmail =>
             this.setState({ currentPasswordForEmail })
           }
-          placeholder="current Password "
+          placeholder="Please Enter Your Password "
         />
       </Item>
       <TouchableOpacity
@@ -541,14 +541,14 @@ class DashBoard extends React.Component<Props, State> {
       <Item>
         <Input
           onChangeText={headerText => this.setState({ headerText })}
-          placeholder="New Text  "
+          placeholder="Enter New Banner Text"
         />
       </Item>
 
       {/* <TouchableOpacity onPress={()=>this.changeEmail(this.state.currentPasswordForEmail , this.state.currentPasswordForEmail)}> */}
       <TouchableOpacity onPress={() => this.changeText()}>
         <View style={styles.button}>
-          <Text>Change Hader Text </Text>
+          <Text>Change Banner Text </Text>
         </View>
       </TouchableOpacity>
     </View>

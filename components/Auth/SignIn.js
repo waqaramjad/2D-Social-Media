@@ -141,7 +141,7 @@ export default class SignIN extends Component {
           
           </Form>
           <Text style={styles.textOfaccountChange}>
-           Don't have account
+           Don't Have An Account
           </Text>
           <TouchableOpacity  >
             <Text 
