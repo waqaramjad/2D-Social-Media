@@ -143,6 +143,11 @@ export default class SignUp extends Component {
 
 
   }
+  componentDidMount(){
+    Expo.ScreenOrientation.allow(
+      Expo.ScreenOrientation.Orientation.LANDSCAPE_RIGHT)
+
+  }
 
 
   render() {

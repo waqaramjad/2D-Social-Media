@@ -103,6 +103,11 @@ export default class SignIN extends Component {
   
     }
   
+    componentDidMount(){
+      Expo.ScreenOrientation.allow(
+        Expo.ScreenOrientation.Orientation.LANDSCAPE_RIGHT)
+  
+    }
   render() {
     if (this.state.loading) {
       return <Expo.AppLoading />;
@@ -124,19 +129,19 @@ export default class SignIN extends Component {
             {/* <CardItem > */}
             <StatusBar hidden={true} />
           <Form style={{marginTop: '10%'}}>
-            <Item >
+            <Item last style={styles.inputField} >
             {/* <Icon active name='lock' /> */}
 
               <Input onChangeText={userEmail => this.setState({userEmail})}  placeholder='Email '/>
             </Item>
-            <Item  last>
+            <Item  last style={styles.inputField}>
               {/* <Label>Password</Label> */}
               {/* <Icon active name='lock' /> */}
               <Input  secureTextEntry={true}	onChangeText={userPassword => this.setState({userPassword})}  placeholder='Password ' />
             </Item>
 
             <Button block style={styles.Login} onPress={() => this.signinAction()}>
-            <Text>Login</Text>
+            <Text style={{marginBottom: 7}}>Login</Text>
           </Button>
           
           </Form>
@@ -182,5 +187,8 @@ const styles = StyleSheet.create({
   } , 
   mainColor : {
     backgroundColor  : '#0F91DC'
+  } , 
+  inputField: {
+    marginLeft : '3%'
   }
 })

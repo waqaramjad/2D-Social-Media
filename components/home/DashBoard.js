@@ -347,7 +347,7 @@ class DashBoard extends React.Component<Props, State> {
       </View>
       <View  style={{flex: 1}}>
         <Card style={{backgroundColor: "#c32222", justifyContent: "center", alignItems: "center"}}>
-          <CardItem button onPress={() => alert("This is Card Header")} style={{backgroundColor: "#c32222"}}>
+          <CardItem button onPress={() => {this.setState({ visibleModal: null })}} style={{backgroundColor: "#c32222"}}>
               <Text style={{backgroundColor: "#c32222" }}>Cancel</Text>
           </CardItem>
         </Card>
@@ -501,7 +501,7 @@ class DashBoard extends React.Component<Props, State> {
         }
       >
         <View style={styles.button}>
-          <Text>change Email </Text>
+          <Text>Change Email </Text>
         </View>
       </TouchableOpacity>
       {/* {this.renderButton("Close", () => this.setState({ visibleModal: null }))} */}
@@ -682,7 +682,7 @@ class DashBoard extends React.Component<Props, State> {
         {/* <Text style={{ fontSize: 25 ,   fontWeight: 'bold' , color:'white'}}>UserName</Text> */}
         {/* <Icon name='settings' fontSize='40'  style={{fontSize:27 , color :  'white'}} onpress={alert('fs')}/> */}
         {/* </View> */}
-        <Button
+        {/* <Button
           transparent
           style={{
             position: "absolute",
@@ -700,7 +700,7 @@ class DashBoard extends React.Component<Props, State> {
             fontSize="40"
             style={{ fontSize: 27, color: "white" }}
           />
-        </Button>
+        </Button> */}
       </Container>
     );
   }

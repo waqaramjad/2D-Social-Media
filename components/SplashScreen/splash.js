@@ -49,6 +49,9 @@ class Splash extends React.Component<Props, State> {
     
     // var a = this.props.navigation.navigate("Home") 
     var a = this.props.navigation
+    Expo.ScreenOrientation.allow(
+      Expo.ScreenOrientation.Orientation.LANDSCAPE_RIGHT)
+
    
         setTimeout(function(){ navigate("Dashboard", {userName: UserName , UID : UID})}, 5000);
     
@@ -65,7 +68,7 @@ class Splash extends React.Component<Props, State> {
     {/* <Left/> */}
     <Body>
 
-              <Text style={{marginLeft:'16%',  marginTop: '10%' ,  fontSize: 25 , fontWeight: 'bold', }}>Welcome {UserName}</Text>
+              <Text style={{marginLeft:'16%',  marginTop: '1%' ,  fontSize: 25 , fontWeight: 'bold', }}>Welcome {UserName}</Text>
     </Body>
 {/* <Right/> */}
             </CardItem>
@@ -79,7 +82,7 @@ class Splash extends React.Component<Props, State> {
   }
 				}   */}
 <Image source={require('../../assets/splash/splash.jpg')}
-style={{height: 350, width: null, flex: 1 , marginTop : "2%"}}
+style={{height: 300, width : null, flex: 1 }}
  
 ></Image>
 </CardItem>
