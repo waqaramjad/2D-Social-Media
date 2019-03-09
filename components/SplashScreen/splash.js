@@ -36,8 +36,8 @@ class Splash extends React.Component<Props, State> {
           userName : ''
         }
         const { state, navigate } = this.props.navigation;
-      //  UserName = state.params.userName
-        // UID = state.params.UID/
+       UserName = state.params.userName
+        UID = state.params.UID
      
                //console.log('this.props')
               //  //console.log(userName)
@@ -53,7 +53,7 @@ class Splash extends React.Component<Props, State> {
       Expo.ScreenOrientation.Orientation.LANDSCAPE_RIGHT)
 
    
-        // setTimeout(function(){ navigate("Dashboard", {userName: UserName , UID : UID})}, 5000);
+        setTimeout(function(){ navigate("Dashboard", {userName: UserName , UID : UID})}, 5000);
     
     }
    
@@ -68,8 +68,8 @@ class Splash extends React.Component<Props, State> {
     {/* <Left/> */}
     <Body>
 
-              {/* <Text style={{marginLeft:'16%',  marginTop: '1%' ,  fontSize: 25 , fontWeight: 'bold', }}>Welcome {UserName}</Text> */}
-              <Text style={{marginLeft:'32%',  marginTop: '1%' ,  fontSize: 25 , fontWeight: 'bold', }}>Welcome UserName</Text>
+              <Text style={{marginLeft:'32%',  marginTop: '1%' ,  fontSize: 25 , fontWeight: 'bold', }}>Welcome {UserName}</Text>
+              {/* <Text style={{marginLeft:'32%',  marginTop: '1%' ,  fontSize: 25 , fontWeight: 'bold', }}>Welcome UserName</Text> */}
     </Body>
 {/* <Right/> */}
             </CardItem>
