@@ -84,8 +84,8 @@ class DashBoard extends React.Component<Props, State> {
     };
     const { state, navigate } = this.props.navigation;
     console.log(state.params);
-    UserName = state.params.userName;
-    UID = state.params.UID
+    // UserName = state.params.userName;
+    // UID = state.params.UID
     //  console.log(state.params.UID)
     //  console.log(state.params)
     //  console.log(userName)
@@ -356,124 +356,10 @@ class DashBoard extends React.Component<Props, State> {
   </View>
 </Container>
 
-    // <View style={styles.modalContent}>
-    //   <Text style={{ fontSize: 25, fontWeight: "bold", color: "white" }}>
-    //     Settings
-    //   </Text>
-
-    //   <View style={styles.rowConrainer}>
-    //     <TouchableOpacity
-          // onPress={() => {
-          //   this.setState({ visbleModalForEmail: true, visibleModal: false });
-          // }}
-    //     >
-    //       <View style={styles.button}>
-    //         <Text>Change Email </Text>
-    //       </View>
-    //     </TouchableOpacity>
-
-    //     <TouchableOpacity
-          // onPress={() => {
-          //   this.setState({
-          //     visbleModalForHeaderText: true,
-          //     visibleModal: false
-          //   });
-          // }}
-    //     >
-    //       <View style={styles.button}>
-    //         <Text>Change Banner Text </Text>
-    //       </View>
-    //     </TouchableOpacity>
-    //   </View>
-    //   <View style={styles.rowConrainer}>
-    //     <TouchableOpacity
-    //       onPress={() => {
-    //         this._pickImage();
-    //       }}
-    //     >
-    //       <View style={styles.button}>
-    //         <Text> Change Image </Text>
-    //       </View>
-    //     </TouchableOpacity>
-    //     <TouchableOpacity
-          // onPress={() => {
-          //   this.setState({
-          //     visbleModalForPassword: true,
-          //     visibleModal: false
-          //   });
-          // }}
-    //     >
-    //       <View style={styles.button}>
-    //         <Text>Change Password </Text>
-    //       </View>
-    //     </TouchableOpacity>
-    //   </View>
-
-    //   <View style={styles.rowConrainer}>
-    //     <TouchableOpacity
-    //       style={{ marginRight: "35%" }}
-          // onPress={() => {
-          //   this.changeBtn();
-          // }}
-    //     >
-    //       <View style={styles.buttonForVib}>
-    //         <Text>{this.state.btnValue} </Text>
-    //       </View>
-    //     </TouchableOpacity>
-    //   </View>
-    //   {/* <View> */}
-    //   <View style={styles.rowConrainer}>
-    //     {this.renderButton("Close", () =>
-    //       this.setState({ visibleModal: null })
-    //     )}
-    //   </View>
-
-    //   {/* </View> */}
-    // {/* <Label style={styles.labelTextRadio}>Copper Drops</Label>                    */}
-
-    // {
-    /* <RadioForm
-     radio_props={true}
-     initial={false}
-     formHorizontal={true}
-     labelHorizontal={true}
-     buttonColor="black"
-     animation={false}
-     onPress={(value) => {alert('uyg')
-
-     }}
-     
-     
-     buttonSize={20}
-     labelStyle={{color: 'black'}}
-     
-     
-     
-     
-     />  */
-    // }
-    // {/* <Button><Text>xcbxcbxc</Text></Button> */}
-
-    // {/* </Content> */}
-    // </View>
   );
 
   renderModalContentForEmail = () => (
     <View style={styles.modalContent}>
-      {/* <Text>Hello!</Text> */}
-      {/* <TouchableOpacity onPress={()=>this.reauthenticate('000000')}>
-        <View style={styles.button}>
-          <Text>change email  </Text>
-          
-        </View>
-      </TouchableOpacity> */}
-      {/* <TouchableOpacity onPress={()=>this.changeEmail('123456', 'waqaramjad420@gmail.com')}>
-        <View style={styles.button}>
-          <Text>2nd Password  </Text>
-          
-        </View>
-      </TouchableOpacity> */}
-
       <Item>
         {/* <Icon active name='lock' /> */}
 
@@ -830,8 +716,11 @@ const styles = StyleSheet.create({
     alignItems: "flex-end"
   },
   bckImage: {
+    // flex : 1 ,
     height: '100%',
-    width: '100%' , 
+    marginLeft: 8 , 
+    width: null , 
+    marginRight : 8
     
   },
   settingImg: {
