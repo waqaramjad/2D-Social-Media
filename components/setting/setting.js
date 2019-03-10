@@ -88,6 +88,7 @@ export class SettingComponent extends Component <Props, State>{
           user
             .updatePassword(newPassword)
             .then(() => {
+              
               console.log("Password updated!");
               alert("Password Updated ");
               // navigate("SignIn" )

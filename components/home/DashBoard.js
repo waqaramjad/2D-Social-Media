@@ -447,7 +447,7 @@ class DashBoard extends React.Component<Props, State> {
     console.log(this.state.newEmail);
 
     return (
-      <Container>
+      <Container style={{flex: 1}}>
         <StatusBar hidden={true} />
         {/* <View > */}
         {/* <Text style={{color:'white' , position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center', alignItems: 'center'}}>Centered text</Text> */}
@@ -463,7 +463,11 @@ class DashBoard extends React.Component<Props, State> {
         {/* <Image style={styles.image} source={{uri: 'https://i.ibb.co/j89xFZ5/ezgif-com-gif-maker.jpg'}} /> */}
         {/* <Image style={styles.image} /> */}
         {/* </View> */}
-        {/* <ImageBackground  source={{uri: 'https://i.ibb.co/VNxT8fh/ezgif-com-rotate.png'}} style={{width: '100%', height: '100%'}}> */}
+        {/* <View style={{paddingLeft: 3 , paddingRight : 3}}> */}
+
+        {/* <ImageBackground  source={{uri: 'https://i.ibb.co/9Wrq7w3/test.png'}} style={{width: '100%', height: '100%',flex: 1}}/> */}
+
+        {/* </View> */}
         <ImageBackground source={BckImage} style={styles.bckImage} />
         {/* Setting */}
         <TouchableOpacity
@@ -707,7 +711,7 @@ const styles = StyleSheet.create({
     justifyContent: "center"
   },
   rowConrainer: {
-    flexDirection: "row",
+    flexDi233rection: "row",
     justifyContent: "space-between"
   },
   closeButton: {
@@ -716,11 +720,12 @@ const styles = StyleSheet.create({
     alignItems: "flex-end"
   },
   bckImage: {
-    // flex : 1 ,
+    flex : 2 ,
     height: '100%',
-    marginLeft: 8 , 
-    width: null , 
-    marginRight : 8
+    marginLeft: 3 , 
+    width: '100%' , 
+    marginRight : 3
+    // padding : '2%'
     
   },
   settingImg: {
