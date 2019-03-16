@@ -84,8 +84,8 @@ class DashBoard extends React.Component<Props, State> {
     };
     const { state, navigate } = this.props.navigation;
     console.log(state.params);
-    // UserName = state.params.userName;
-    // UID = state.params.UID
+    UserName = state.params.userName;
+    UID = state.params.UID
     //  console.log(state.params.UID)
     //  console.log(state.params)
     //  console.log(userName)
@@ -711,7 +711,7 @@ const styles = StyleSheet.create({
     justifyContent: "center"
   },
   rowConrainer: {
-    flexDi233rection: "row",
+    flexDirection: "row",
     justifyContent: "space-between"
   },
   closeButton: {
@@ -720,11 +720,11 @@ const styles = StyleSheet.create({
     alignItems: "flex-end"
   },
   bckImage: {
-    flex : 2 ,
+    // flex : 2 ,
     height: '100%',
-    marginLeft: 3 , 
-    width: '100%' , 
-    marginRight : 3
+    // marginLeft: 3 , 
+    width: '100%'  
+    // marginRight : 3
     // padding : '2%'
     
   },
